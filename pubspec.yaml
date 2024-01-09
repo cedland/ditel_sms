@@ -1,0 +1,71 @@
+name: ditel_sms_app
+description: Application d'envois des messages.
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.1.5 <4.0.0'
+
+
+dependencies:
+  flutter:
+    sdk: flutter
+  #Utility Packages
+  http: ^1.1.0
+  intl: ^0.18.1
+  logger: ^2.0.1
+  url_launcher: ^6.1.12
+  percent_indicator: ^4.2.3
+  file_picker: ^5.2.10
+  open_app_file: ^4.0.2
+  easy_search_bar: ^2.5.0
+
+
+  #Icons
+  iconsax: ^0.0.8
+  cupertino_icons: ^1.0.2
+
+  #State management
+  get: ^4.6.5
+  get_storage: ^2.1.1
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+
+
+  flutter_lints: ^2.0.0
+
+
+flutter:
+
+
+  uses-material-design: true
+
+  assets:
+    - assets/logos/
+    - assets/images/
+    - assets/icons/brands/
+    - assets/icons/
+    - assets/images/dashboard/
+
+  fonts:
+    - family: LatoBold
+      fonts:
+        - asset: assets/fonts/Lato-Bold.ttf
+    - family: LatoLight
+      fonts:
+        - asset: assets/fonts/Lato-Light.ttf
+    - family: LatoRegular
+      fonts:
+        - asset: assets/fonts/Lato-Regular.ttf
+    - family: LatoBoldItalic
+      fonts:
+        - asset: assets/fonts/Lato-BoldItalic.ttf
+    - family: LatoThin
+      fonts:
+        - asset: assets/fonts/Lato-Thin.ttf
+
