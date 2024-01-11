@@ -312,7 +312,7 @@ class _ParametreCampagneState extends State<ParametreCampagne> {
                               if (result != null)
                                 Container(
                                   width: 400,
-                                  height: 33,
+                                  height: 35,
                                   color: TColors.bg,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),

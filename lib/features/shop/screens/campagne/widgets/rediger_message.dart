@@ -171,8 +171,8 @@ class _RedigerMessageState extends State<RedigerMessage> {
                       ),
                     ),
                     const SizedBox(width: 10),
-                    Container(
-                      width: 100,
+                    SizedBox(
+                      width: 102,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -186,8 +186,6 @@ class _RedigerMessageState extends State<RedigerMessage> {
                                 fontSize: 13),
                           ),
                           SizedBox(
-                            // color: Colors.red,
-                            width: 209,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
