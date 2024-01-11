@@ -4,6 +4,13 @@ import 'package:ditel_sms_app/features/shop/screens/dashboard/widgets/meeting_wi
 import 'package:ditel_sms_app/features/shop/screens/dashboard/widgets/contact_widget.dart';
 import 'package:flutter/material.dart';
 
+import '../../action_rapide/creer_campagne.dart';
+import '../../action_rapide/creer_contact.dart';
+import '../../action_rapide/creer_groupe.dart';
+import '../../action_rapide/creer_message.dart';
+import '../../campagne/widgets/campagne_groupe.dart';
+import '../../campagne/widgets/nouvelle_campagne_groupe.dart';
+import '../dashbord.dart';
 import '../widgets/dashboard_app_bar.dart';
 import '../../../../../common/widgets/dashboard/text_trois.dart';
 import '../../../../../data/dummy_data.dart';
@@ -106,25 +113,47 @@ class DashboardWidget extends StatelessWidget {
                                           ),
                                           physics:
                                           const NeverScrollableScrollPhysics(),
-                                          children:  const [
+                                          children:   [
                                             GridItem(
                                                 icon: Icons.computer,
                                                 text:
-                                                "Créer une campagne"),
+                                                "Créer une campagne",
+                                              ontap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(builder: (context) => CreerCampagne()),
+                                              );
+                                                  },),
                                             GridItem(
                                                 icon: Icons.people,
                                                 text:
-                                                "Créer un contact"),
+                                                "Créer un contact",
+                                              ontap: () {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(builder: (context) => CreerContact()),
+                                                );
+                                              },),
                                             GridItem(
                                                 icon: Icons
                                                     .message_rounded,
                                                 text:
-                                                "Envoyer un message"),
+                                                "Envoyer un message", ontap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(builder: (context) => CreerMessage()),
+                                              );
+                                            },),
                                             GridItem(
                                                 icon: Icons
                                                     .drive_folder_upload,
                                                 text:
-                                                "Créer un groupe"),
+                                                "Créer un groupe", ontap: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(builder: (context) => CreerGroupe()),
+                                              );
+                                            },),
                                           ],
                                         ),
                                       ),

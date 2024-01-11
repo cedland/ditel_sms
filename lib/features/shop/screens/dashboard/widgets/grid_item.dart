@@ -6,13 +6,14 @@ import '../../../../../utils/constants/colors.dart';
 class GridItem extends StatelessWidget {
   final IconData icon;
   final String text;
+  final Function() ontap;
 
-  const GridItem({super.key, required this.icon, required this.text});
+  const GridItem({super.key, required this.icon, required this.text,required this.ontap});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: ontap,
       child: Container(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),

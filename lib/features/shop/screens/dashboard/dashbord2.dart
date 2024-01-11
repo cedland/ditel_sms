@@ -228,25 +228,25 @@ class Dashboard2 extends StatelessWidget {
                                             ),
                                             physics:
                                             const NeverScrollableScrollPhysics(),
-                                            children:  const [
+                                            children:  [
                                               GridItem(
                                                   icon: Icons.computer,
                                                   text:
-                                                  "Créer une campagne"),
+                                                  "Créer une campagne", ontap: () {  },),
                                               GridItem(
                                                   icon: Icons.people,
                                                   text:
-                                                  "Créer un contact"),
+                                                  "Créer un contact", ontap: () {  },),
                                               GridItem(
                                                   icon: Icons
                                                       .message_rounded,
                                                   text:
-                                                  "Envoyer un message"),
+                                                  "Envoyer un message", ontap: () {  },),
                                               GridItem(
                                                   icon: Icons
                                                       .drive_folder_upload,
                                                   text:
-                                                  "Créer un groupe"),
+                                                  "Créer un groupe", ontap: () {  },),
                                             ],
                                           ),
                                         ),
