@@ -25,7 +25,5 @@ class AddContact extends StatelessWidget {
   }
 }
 
-/*Expanded(
-                child: InformationGenerale()),*/
 
 

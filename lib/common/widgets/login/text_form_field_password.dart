@@ -24,9 +24,9 @@ class _TextFormFieldPasswordWidgetState extends State<TextFormFieldPasswordWidge
   Widget build(BuildContext context) {
     return SizedBox(
       width: widget.width,
-      height: 50,
+      height: 70,
       child: TextFormField(
-        style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: TColors.title, fontSize: 16, fontFamily: 'LatoBold'),
+        style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: TColors.title, fontSize: 12, fontFamily: 'LatoBold'),
         decoration: InputDecoration(
             suffixIcon:  InkWell(
               onTap: () {
@@ -46,14 +46,14 @@ class _TextFormFieldPasswordWidgetState extends State<TextFormFieldPasswordWidge
                 .bodySmall!
                 .copyWith(
                 color: TColors.subtitle,
-                fontSize: 14,fontFamily: 'LatoRegular'),
+                fontSize: 12,fontFamily: 'LatoRegular'),
             hintText: widget.hintext,
             hintStyle: Theme.of(context)
                 .textTheme
                 .bodySmall!
                 .copyWith(
                 color: TColors.txtbouttongreydark,
-                fontSize: 14,
+                fontSize: 10,
                 fontFamily: 'LatoLight'
             )
 

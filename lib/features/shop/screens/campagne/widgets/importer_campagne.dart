@@ -1,4 +1,7 @@
 
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:ditel_sms_app/features/shop/screens/campagne/widgets/rounded_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -12,12 +15,15 @@ import 'boutton_campagne.dart';
 import 'contact_campagne.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:open_app_file/open_app_file.dart';
+import 'package:csv/csv.dart';
 
 
 class ImporterCampagne extends StatefulWidget {
-  const ImporterCampagne({
-    super.key,
-  });
+  ImporterCampagne({super.key,});
+
+  TextEditingController nomController = TextEditingController();
+  TextEditingController nom1Controller = TextEditingController();
+  TextEditingController resumeController = TextEditingController();
 
   @override
   State<ImporterCampagne> createState() => _ImporterCampagneState();
@@ -34,6 +40,8 @@ class _ImporterCampagneState extends State<ImporterCampagne> {
     'Groupe 2',
     'Groupe 3',
   ];
+
+  String initial ="";
   DateTime selectedDate = DateTime.now();
   Future<void> _selectDate(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
@@ -243,9 +251,7 @@ class _ImporterCampagneState extends State<ImporterCampagne> {
                                               (context, index) {
                                             return InkWell(
                                               onTap: () {},
-                                              child: RoundedImage(
-                                                  contact:
-                                                  contacts[index]),
+                                              child: RoundedImage(image: ''),
                                             );
                                           },
                                         ),
@@ -392,9 +398,9 @@ class _ImporterCampagneState extends State<ImporterCampagne> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      const TextFormFieldWidget(label: "Nom campagne",icon: Icons.camera,hintext:"Entrer le nom de la campagne",width: 505,color: TColors.txtbouttongreydark,),
+                      TextFormFieldWidget(label: "Nom campagne",icon: Icons.camera,hintext:"Entrer le nom de la campagne",width: 505,color: TColors.txtbouttongreydark,controller: widget.nomController,),
                       Padding(
-                        padding: const EdgeInsets.only(top: 10.0),
+                        padding: const EdgeInsets.only(bottom: 3.0),
                         child: Container(
                           width:505,
                           child:  Row(
@@ -462,14 +468,14 @@ class _ImporterCampagneState extends State<ImporterCampagne> {
                 const SizedBox(
                   height: 20,
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //TextFormFieldWidget(label: "Civilité",icon: Icons.person,hintext:"Enter your name",width: 505,color: TColors.txtbouttongreydark,),
-                      TextFormFieldWidget(label: "Résumé campagne",icon: Icons.edit,hintext:"Entrer le résumé de la campagne",width: 1060,color: TColors.txtbouttongreydark,),
+                      TextFormFieldWidget(label: "Résumé campagne",icon: Icons.edit,hintext:"Entrer le résumé de la campagne",width: 1060,color: TColors.txtbouttongreydark,controller: widget.resumeController,),
                     ],
                   ),
                 ),
@@ -479,6 +485,8 @@ class _ImporterCampagneState extends State<ImporterCampagne> {
             const SizedBox(
               height: 30,
             ),
+            //Container(color:Colors.blue, width:50, height:50,child: Text(initial)),
+
 
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
@@ -509,7 +517,7 @@ class _ImporterCampagneState extends State<ImporterCampagne> {
                               if (result != null)
                                 Container(
                                   width: 400,
-                                  height: 33,
+                                  height: 35,
                                   color: TColors.bg,
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
@@ -548,17 +556,42 @@ class _ImporterCampagneState extends State<ImporterCampagne> {
                           ),
                           GestureDetector(
                             onTap: () async{
+                              //FilePickerResult? csvFile = await FilePicker.platform.pickFiles(allowMultiple: false,type: FileType.custom, allowedExtensions: ['csv'],);
+                              FilePickerResult? csvFile = await FilePicker.platform.pickFiles(allowMultiple: false,type: FileType.custom, allowedExtensions: ['csv'],);
+                              if(csvFile != null){
+                                //decode bytes back to utf8
+                                //final bytes = csvFile!.files[0].bytes;
+                                final bytes = utf8.decode(csvFile!.files[0].bytes as List<int>);
+                                //String? convertvalue= jsonEncode(bytes);
+                                //List<List<dynamic>> rowsAsListOfValues  = const  CsvToListConverter().convert(convertvalue);
+                                List<List<dynamic>> rowsAsListOfValues  = const  CsvToListConverter().convert(bytes);
+                                //print(csvFile!.files[0].name);
+                                //print(rowsAsListOfValues.length);
+                                for(int i = 0; i <rowsAsListOfValues.length; i++)
+                                  {
+                                    for (int j = 0; j < rowsAsListOfValues.elementAt(i).length; j++)
+                                      {
+                                        setState(() {
+                                          widget.nomController.text = rowsAsListOfValues.elementAt(i).elementAt(0);
+                                        });
+                                      }
+                                  }
+                              }
+                            },
+                            /*onTap: () async{
                               result =
-                              await FilePicker.platform.pickFiles(allowMultiple: true);
+                              await FilePicker.platform.pickFiles(allowMultiple: false,type: FileType.custom,
+                                allowedExtensions: ['csv'],);
                               if (result == null) {
                                 print("No file selected");
                               } else {
                                 setState(() {});
                                 for (var element in result!.files) {
                                   print(element.name);
+                                  print(element.bytes);
                                 }
                               }
-                            },
+                            },*/
                             child: Container(
                               width: 36,
                               height: 36,
@@ -574,6 +607,7 @@ class _ImporterCampagneState extends State<ImporterCampagne> {
 
                             ),
                           ),
+
                         ],
                       ),
                     ),

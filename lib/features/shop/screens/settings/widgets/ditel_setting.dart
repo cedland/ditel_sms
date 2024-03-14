@@ -7,9 +7,10 @@ import 'boutton_settings.dart';
 import 'container_radio.dart';
 
 class DitelSetting extends StatefulWidget {
-  const DitelSetting({
-    super.key,
-  });
+  DitelSetting({super.key,});
+
+  TextEditingController portController = TextEditingController();
+  TextEditingController vitesseController = TextEditingController();
 
   @override
   State<DitelSetting> createState() => _DitelSettingState();
@@ -52,7 +53,7 @@ class _DitelSettingState extends State<DitelSetting> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const TextFormFieldWidget(label: "Vitesse (Bauds)",icon: Icons.speed,hintext:"Entrer la vitesse",width: 304,color: TColors.txtbouttongreydark,),
+                  TextFormFieldWidget(label: "Vitesse (Bauds)",icon: Icons.speed,hintext:"Entrer la vitesse",width: 304,color: TColors.txtbouttongreydark,controller: widget.vitesseController,),
                   const SizedBox(width: 30,),
                   Container(
                     width: 100,
@@ -127,13 +128,13 @@ class _DitelSettingState extends State<DitelSetting> {
               ),
             ),
             const SizedBox(height: 20,),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 18.0),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 18.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  TextFormFieldWidget(label: "N° du port série (1 à 32) :",icon: Icons.numbers,hintext:"Entrer le N° du port",width: 304,color: TColors.txtbouttongreydark,),
+                  TextFormFieldWidget(label: "N° du port série (1 à 32) :",icon: Icons.numbers,hintext:"Entrer le N° du port",width: 304,color: TColors.txtbouttongreydark,controller: widget.portController,),
                 ],
               ),
             ),

@@ -1,14 +1,18 @@
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 
 import '../../../../../classes/contact.dart';
 import '../../../../../utils/constants/colors.dart';
+import 'package:http/http.dart' as http;
 
 class ContactDetailed extends StatefulWidget {
-  const ContactDetailed({super.key, required this.contact, required this.connected});
-
-  final Contact contact;
+  const ContactDetailed({super.key, required this.connected, required this.image, required this.name, required this.fonction, required this.telephone});
   final bool connected;
+  final String image;
+  final String name;
+  final String fonction;
+  final String telephone;
 
   @override
   ContactDetailedState createState() => ContactDetailedState();
@@ -16,7 +20,6 @@ class ContactDetailed extends StatefulWidget {
 
 class ContactDetailedState extends State<ContactDetailed> {
   bool isHovered = false;
-
   @override
   Widget build(BuildContext context) {
     return MouseRegion(
@@ -39,18 +42,18 @@ class ContactDetailedState extends State<ContactDetailed> {
           boxShadow: isHovered
               ? [
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              blurRadius: 5,
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 1,
               offset: const Offset(0, 2), // Bottom shadow
             ),
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              blurRadius: 5,
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 1,
               offset: const Offset(2, 0), // Right shadow
             ),
             BoxShadow(
-              color: Colors.grey.withOpacity(0.5),
-              blurRadius: 5,
+              color: Colors.grey.withOpacity(0.2),
+              blurRadius: 1,
               offset: const Offset(-2, 0), // Left shadow
             ),
           ]
@@ -72,11 +75,15 @@ class ContactDetailedState extends State<ContactDetailed> {
                           child: ClipRRect(
                             borderRadius: BorderRadius.circular(10),
                             child: Image.network(
-                              widget.contact.image,
-                              width: 40,
-                              height: 40,
-                              fit: BoxFit.cover,
-                            ),
+                                widget.image,
+                                width: 40,
+                                height: 40,
+                                fit:BoxFit.cover,
+                                errorBuilder: (BuildContext context, Object exception,
+                                    StackTrace? stackTrace) {
+                                  return Image.asset('assets/images/dashboard/img1.png');
+                                },
+                              )
                           ),
                         ),
                         Positioned(
@@ -108,7 +115,7 @@ class ContactDetailedState extends State<ContactDetailed> {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        widget.contact.name,
+                        widget.name,
                         style: Theme.of(context)
                             .textTheme
                             .bodySmall!
@@ -125,7 +132,7 @@ class ContactDetailedState extends State<ContactDetailed> {
                 child: Container(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    widget.contact.function,
+                    widget.fonction,
                       style: Theme.of(context)
                           .textTheme
                           .bodySmall!
@@ -140,7 +147,7 @@ class ContactDetailedState extends State<ContactDetailed> {
               Expanded(
                 child: Container(
                   alignment: Alignment.centerLeft,
-                  child: Text(widget.contact.phoneNumber[0],style: Theme.of(context)
+                  child: Text(widget.telephone,style: Theme.of(context)
                       .textTheme
                       .bodySmall!
                       .copyWith(

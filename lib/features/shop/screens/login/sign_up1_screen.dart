@@ -11,8 +11,8 @@ import '../../../../common/widgets/login/titre.dart';
 import '../../../../utils/constants/colors.dart';
 
 class SignUp1Screen extends StatelessWidget {
-  const SignUp1Screen({super.key});
-
+  SignUp1Screen({super.key});
+  TextEditingController emailController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +30,7 @@ class SignUp1Screen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const TextFormFieldWidget(label: "Email",validator: "The email you provided is not valid",icon: Icons.mail,hintext: "Enter your Email",width: 420,color: TColors.title,),
+                    TextFormFieldWidget(label: "Email",validator: "The email you provided is not valid",icon: Icons.mail,hintext: "Enter your Email",width: 420,color: TColors.title,controller: emailController,),
                     const SizedBox(height: 18,),
                     const AgreeWidget(text: 'I agree with terms & conditions', color: TColors.subtitle,),
                     const SizedBox(height: 18,),

@@ -4,11 +4,10 @@ import '../../../../../classes/contact.dart';
 import '../../../../../utils/constants/colors.dart';
 class InfoContact extends StatelessWidget {
   const InfoContact({
-    super.key,
-    required this.contact, required this.text, required this.bouton, required this.value,
+    super.key, required this.text, required this.bouton, required this.value,
   });
 
-  final Contact contact;
+  //final Contact contact;
   final String text;
   final bool bouton;
   final String value;
@@ -23,7 +22,7 @@ class InfoContact extends StatelessWidget {
         children: [
           Container(
               color: Colors.white,
-              width: 152,
+              width: 115,
               child: Align(
                   alignment:Alignment.centerRight,
                   child: Text(text,style: Theme.of(context)
@@ -35,9 +34,9 @@ class InfoContact extends StatelessWidget {
                       fontFamily: "LatoRegular"
                   )))
           ),
-          SizedBox(width: 17,),
-          Container(
-            width: 355,
+          const SizedBox(width: 40,),
+          SizedBox(
+            width: 100,
             child: Align(
               alignment: Alignment.centerLeft,
               child: Text(
@@ -52,14 +51,14 @@ class InfoContact extends StatelessWidget {
               ),
             ),
           ),
-          const SizedBox(width: 11,),
+          const SizedBox(width: 80,),
           bouton ? Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
               color: const Color.fromARGB(255, 243, 244, 249),
             ),
             child: Align(
-              alignment: Alignment.center,
+              alignment: Alignment.centerRight,
               child: TextButton(
                 onPressed: () {},
                 child: Text(

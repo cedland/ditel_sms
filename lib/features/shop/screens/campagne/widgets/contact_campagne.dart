@@ -6,9 +6,11 @@ import '../../../../../classes/contact.dart';
 import '../../../../../utils/constants/colors.dart';
 
 class ContactCampagne extends StatelessWidget {
-  final Contact contact;
+  final String image;
+  final String name;
+  final void Function() ontap;
 
-  const ContactCampagne({super.key, required this.contact});
+  const ContactCampagne({super.key, required this.image, required this.name, required this.ontap,});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class ContactCampagne extends StatelessWidget {
       padding: const EdgeInsets.all(9.0),
       child:
       Container(
-        height: 20,
+        height: 15,
         //width: 150,
         decoration: BoxDecoration(
           border: Border.all(
@@ -26,29 +28,32 @@ class ContactCampagne extends StatelessWidget {
           borderRadius: BorderRadius.circular(12)
         ),
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
+          padding: const EdgeInsets.symmetric(horizontal: 4.0),
           child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   ClipRRect(
                     borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      contact.image,
-                      width: 30,
-                      height: 30,
-                      fit: BoxFit.cover,
+                    child:Image.network(
+                      image,
+                      width: 6,
+                      height: 6,
+                      errorBuilder: (BuildContext context, Object exception,
+                          StackTrace? stackTrace) {
+                        return Image.asset('assets/images/dashboard/img1.png');
+                      },
                     ),
                   ),
                   const SizedBox(width: 5,),
-                  Text(contact.name,style: Theme.of(context)
+                  Text(name,style: Theme.of(context)
                       .textTheme
                       .bodyMedium!
                       .copyWith(
                       fontFamily: "LatoBold",
-                      fontSize: 14,color: TColors.title),),
+                      fontSize: 10,color: TColors.title),),
                   const SizedBox(width: 5,),
-                  const Icon(Icons.clear,color: TColors.txtbouttongreydark,)
+                  InkWell(onTap:ontap,child: const Icon(Icons.clear,color: TColors.txtbouttongreydark,))
                 ],
               ),
         ),

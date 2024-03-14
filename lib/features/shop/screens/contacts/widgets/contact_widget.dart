@@ -5,9 +5,14 @@ import '../../../../../utils/constants/colors.dart';
 import 'add_contact_field.dart';
 import 'boutton_contact.dart';
 class ContactWidgetContact extends StatefulWidget {
-  const ContactWidgetContact({
-    super.key,
-  });
+  ContactWidgetContact({super.key,});
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController telController = TextEditingController();
+  TextEditingController lien1Controller = TextEditingController();
+  TextEditingController lien2Controller = TextEditingController();
+  TextEditingController lien3Controller = TextEditingController();
+  TextEditingController lien4Controller = TextEditingController();
 
   @override
   State<ContactWidgetContact> createState() => _ContactWidgetContactState();
@@ -53,7 +58,7 @@ class _ContactWidgetContactState extends State<ContactWidgetContact> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //TextFormFieldWidget(label: "Civilité",icon: Icons.person,hintext:"Enter your name",width: 505,color: TColors.txtbouttongreydark,),
-                      const TextFormFieldWidget(label: "Email",icon: Icons.email,hintext:"Entrer email",width: 505,color: TColors.txtbouttongreydark,),
+                      TextFormFieldWidget(label: "Email",icon: Icons.email,hintext:"Entrer email",width: 505,color: TColors.txtbouttongreydark,controller: widget.emailController,),
                       Padding(
                         padding: const EdgeInsets.only(left: 58.0),
                         child: Container(
@@ -81,7 +86,7 @@ class _ContactWidgetContactState extends State<ContactWidgetContact> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       //TextFormFieldWidget(label: "Civilité",icon: Icons.person,hintext:"Enter your name",width: 505,color: TColors.txtbouttongreydark,),
-                      const TextFormFieldWidget(label: "Tel",icon: Icons.phone,hintext:"Entrer numéro tél",width: 505,color: TColors.txtbouttongreydark,),
+                      TextFormFieldWidget(label: "Tel",icon: Icons.phone,hintext:"Entrer numéro tél",width: 505,color: TColors.txtbouttongreydark,controller: widget.telController,),
                       Padding(
                         padding: const EdgeInsets.only(left: 58.0),
                         child: Container(
@@ -171,9 +176,9 @@ class _ContactWidgetContactState extends State<ContactWidgetContact> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(top: 8.0),
-                        child: TextFormFieldWidget(label: "Lien",icon: Icons.link,hintext:"Ajouter lien profil",width: 505,color: TColors.txtbouttongreydark,),
+                        child: TextFormFieldWidget(label: "Lien",icon: Icons.link,hintext:"Ajouter lien profil",width: 505,color: TColors.txtbouttongreydark,controller: widget.lien1Controller,),
                       ),
                     ],
                   ),
@@ -227,9 +232,9 @@ class _ContactWidgetContactState extends State<ContactWidgetContact> {
                           ),
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 8.0),
-                        child: TextFormFieldWidget(label: "Lien",icon: Icons.link,hintext:"Ajouter lien profil",width: 505,color: TColors.txtbouttongreydark,),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: TextFormFieldWidget(label: "Lien",icon: Icons.link,hintext:"Ajouter lien profil",width: 505,color: TColors.txtbouttongreydark,controller: widget.lien2Controller),
                       ),
                     ],
                   ),
@@ -283,9 +288,9 @@ class _ContactWidgetContactState extends State<ContactWidgetContact> {
                           ),
                         ),
                       ),
-                      const Padding(
-                        padding: EdgeInsets.only(top: 8.0),
-                        child: TextFormFieldWidget(label: "Lien",icon: Icons.link,hintext:"Ajouter lien profil",width: 505,color: TColors.txtbouttongreydark,),
+                       Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: TextFormFieldWidget(label: "Lien",icon: Icons.link,hintext:"Ajouter lien profil",width: 505,color: TColors.txtbouttongreydark,controller: widget.lien3Controller),
                       ),
                     ],
                   ),
@@ -339,86 +344,16 @@ class _ContactWidgetContactState extends State<ContactWidgetContact> {
                           ),
                         ),
                       ),
-                      const Padding(
+                      Padding(
                         padding: EdgeInsets.only(top: 8.0),
-                        child: TextFormFieldWidget(label: "Lien",icon: Icons.link,hintext:"Ajouter lien profil",width: 505,color: TColors.txtbouttongreydark,),
+                        child: TextFormFieldWidget(label: "Lien",icon: Icons.link,hintext:"Ajouter lien profil",width: 505,color: TColors.txtbouttongreydark,controller: widget.lien4Controller),
                       ),
                     ],
                   ),
                 ),
               ],
             ),
-            /*const SizedBox(
-              height: 20,
-            ),
-            Column(
-              crossAxisAlignment:
-              CrossAxisAlignment.start,
-              children: [
-                Container(
-                  padding: const EdgeInsets.all(8),
-                  child: Text(
-                    "Email & Tel",
-                    style: Theme.of(context)
-                        .textTheme
-                        .bodyMedium!
-                        .copyWith(
-                        fontWeight:
-                        FontWeight.bold),
-                  ),
-                ),
-                Container(
-                  child: const Row(
-                    children: [
-                      Expanded(
-                        child: Column(
-                          children: [
-                            AddContactField(
-                                fieldName: "Social",
-                                icon: Icons
-                                    .keyboard_arrow_down_rounded),
-                            AddContactField(
-                                fieldName: "Social",
-                                icon: Icons
-                                    .keyboard_arrow_down_rounded),
-                            AddContactField(
-                                fieldName: "Social",
-                                icon: Icons
-                                    .keyboard_arrow_down_rounded),
-                            AddContactField(
-                                fieldName: "Social",
-                                icon: Icons
-                                    .keyboard_arrow_down_rounded),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Expanded(
-                        child: Column(
-                          children: [
-                            AddContactField(
-                                fieldName: "Lien",
-                                icon: Icons.link),
-                            AddContactField(
-                                fieldName: "Lien",
-                                icon: Icons.link),
-                            AddContactField(
-                                fieldName: "Lien",
-                                icon: Icons.link),
-                            AddContactField(
-                                fieldName: "Lien",
-                                icon: Icons.link),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),*/
-            BouttonContact(onPressed1: () {}, onPressed2: () {})
+            BouttonContact(onPressed1: () {}, onPressed2: () {}, text: 'Enregistrer',)
           ],
         ),
       ),

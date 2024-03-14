@@ -5,10 +5,9 @@ import '../../../../../utils/constants/colors.dart';
 class SocialButton extends StatelessWidget {
   const SocialButton({
     super.key,
-    required this.contact,
   });
 
-  final Contact contact;
+  //final Contact contact;
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +19,7 @@ class SocialButton extends StatelessWidget {
         children: [
           Container(
               color: Colors.white,
-              width: 152,
+              width: 115,
               child: Align(
                   alignment:Alignment.centerRight,
                   child: Text("Social",style: Theme.of(context)
@@ -31,9 +30,9 @@ class SocialButton extends StatelessWidget {
                       fontSize: 14
                   )))
           ),
-          SizedBox(width: 17,),
+          const SizedBox(width: 40,),
           Container(
-            width: 355,
+            width: 255,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),
             ),
@@ -44,10 +43,6 @@ class SocialButton extends StatelessWidget {
                 _buildRowIcon("assets/icons/twitter.png"),
                 _buildRowIcon("assets/icons/insta.png"),
                 _buildRowIcon("assets/icons/whatsapp.png"),
-               /* _buildRowIcon(Icons.edit),
-                _buildRowIcon(Icons.edit),
-                _buildRowIcon(Icons.edit),
-                _buildRowIcon(Icons.edit),*/
               ],
             ),
           )

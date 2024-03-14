@@ -11,14 +11,12 @@ class ContactWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return const Expanded(
       child: Row(
         children: [
-          const GroupWidget(),
+          GroupWidget(),
           Expanded(
-              child: ContactListView(
-                contacts: contacts,
-              )),
+              child: ContactListView()),
         ],
       ),
     );

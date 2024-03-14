@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 class BouttonContact extends StatelessWidget {
   const BouttonContact({
-    super.key, required this.onPressed1, required this.onPressed2
+    super.key, required this.onPressed1, required this.onPressed2, required this.text
   });
   final VoidCallback onPressed1;
   final VoidCallback onPressed2;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class BouttonContact extends StatelessWidget {
                 child: TextButton(
                   onPressed: onPressed1,
                   child: Text(
-                    "Enregistrer",
+                    text,
                     style: Theme.of(context)
                         .textTheme
                         .bodyMedium!

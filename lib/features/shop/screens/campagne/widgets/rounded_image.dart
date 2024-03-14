@@ -1,14 +1,9 @@
-
 import 'package:flutter/material.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
-
-import '../../../../../classes/contact.dart';
-import '../../../../../utils/constants/colors.dart';
 
 class RoundedImage extends StatelessWidget {
-  final Contact contact;
+  final String image;
 
-  const RoundedImage({super.key, required this.contact});
+  const RoundedImage({super.key,required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +15,14 @@ class RoundedImage extends StatelessWidget {
           ClipRRect(
             borderRadius: BorderRadius.circular(10),
             child: Image.network(
-              contact.image,
-              width: 32,
-              height: 32,
-              fit: BoxFit.cover,
-            ),
+                image,
+                width: 32,
+                height: 32,
+                errorBuilder: (BuildContext context, Object exception,
+                    StackTrace? stackTrace) {
+                  return Image.asset('assets/images/dashboard/img1.png');
+                },
+              )
           ),
         ],
       ),

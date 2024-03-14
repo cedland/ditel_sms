@@ -74,8 +74,8 @@ class _GroupSettingState extends State<GroupSetting> {
                     });
                   },
                   child: pageId == 0
-                      ? const ContainerActif(text1: "Information entreprise", text2: "Information générales", icon: Icons.assignment, actif: true,)
-                      : const ContainerActif(text1: "Information entreprise", text2: "Information générales", icon: Icons.assignment, actif: false,)
+                      ? const ContainerActif(text1: "Information entreprise", text2: "Information générales", icon: Icons.assignment, actif: true, activation: true,)
+                      : const ContainerActif(text1: "Information entreprise", text2: "Information générales", icon: Icons.assignment, actif: false, activation: true,)
               ),
               const Divider(
                 color: TColors.txtbouttongrey,
@@ -89,8 +89,8 @@ class _GroupSettingState extends State<GroupSetting> {
                     });
                   },
                   child: pageId == 1
-                      ? const ContainerActif(text1: "Sécurité", text2: "Identifiants",icon: Icons.security,actif: true,)
-                      : const ContainerActif(text1: "Sécurité", text2: "Identifiants",icon: Icons.security,actif: false,)
+                      ? const ContainerActif(text1: "Sécurité", text2: "Identifiants",icon: Icons.security,actif: true, activation: true,)
+                      : const ContainerActif(text1: "Sécurité", text2: "Identifiants",icon: Icons.security,actif: false, activation: true,)
               ),
               GestureDetector(
                   onTap: () {
@@ -99,8 +99,8 @@ class _GroupSettingState extends State<GroupSetting> {
                     });
                   },
                   child: pageId == 2
-                      ? const ContainerActif(text1: "Ditel", text2: "Intégration Ditel SMS",icon: Icons.domain,actif: true,)
-                      : const ContainerActif(text1: "Ditel", text2: "Intégration Ditel SMS",icon: Icons.domain,actif: false,)
+                      ? const ContainerActif(text1: "Ditel", text2: "Intégration Ditel SMS",icon: Icons.domain,actif: true, activation: true,)
+                      : const ContainerActif(text1: "Ditel", text2: "Intégration Ditel SMS",icon: Icons.domain,actif: false, activation: true,)
               ),
 
             ],
@@ -108,7 +108,7 @@ class _GroupSettingState extends State<GroupSetting> {
 
         ),
         //pageId == 0 ? const Informations(): const ContactWidget()
-        pageId == 0 ? const InformationSetting() : (pageId == 1 ? const SecuriteSetting() : const DitelSetting())
+        pageId == 0 ? InformationSetting() : (pageId == 1 ? const SecuriteSetting() : DitelSetting())
       ],
     );
   }

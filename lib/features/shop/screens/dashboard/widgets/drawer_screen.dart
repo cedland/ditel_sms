@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../utils/constants/colors.dart';
-import '../../campagne/widgets/rediger_message.dart';
 import '../../contacts/widgets/container_actif.dart';
 import '../../message/message_web.dart';
 import '../dashbord.dart';
@@ -52,7 +51,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
                             pageId = 0;
                             Navigator.push(
                               context,
-                              MaterialPageRoute(builder: (context) => Dashboard()),
+                              MaterialPageRoute(builder: (context) => Dashboard(0)),
                             );
                           });
                         },

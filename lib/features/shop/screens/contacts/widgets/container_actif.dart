@@ -4,12 +4,13 @@ import 'package:flutter/material.dart';
 import '../../../../../utils/constants/colors.dart';
 class ContainerActif extends StatelessWidget {
   const ContainerActif({
-    super.key, required this.text1, required this.text2, required this.icon, required this.actif,
+    super.key, required this.text1, required this.text2, required this.icon, required this.actif, required this.activation,
   });
   final String text1;
   final String text2;
   final IconData icon;
   final bool actif;
+  final bool activation;
 
   @override
   Widget build(BuildContext context) {

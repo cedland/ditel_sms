@@ -6,9 +6,17 @@ import '../../contacts/widgets/boutton_contact.dart';
 import 'boutton_settings.dart';
 
 class InformationSetting extends StatefulWidget {
-  const InformationSetting({
-    super.key,
-  });
+  InformationSetting({super.key,});
+
+  TextEditingController nomController = TextEditingController();
+  TextEditingController telController = TextEditingController();
+  TextEditingController adresseController = TextEditingController();
+  TextEditingController complementController = TextEditingController();
+  TextEditingController cpController = TextEditingController();
+  TextEditingController villeController = TextEditingController();
+  TextEditingController nom2Controller = TextEditingController();
+  TextEditingController tel2Controller = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
   @override
   State<InformationSetting> createState() => _InformationSettingState();
@@ -70,26 +78,26 @@ class _InformationSettingState extends State<InformationSetting> {
                         fontFamily: "LatoBold"),
                   ),
                 ),
-                const Padding(
+                 Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      TextFormFieldWidget(label: "Nom entreprise",icon: Icons.domain,hintext:"Entrer le nom de l'entreprise",width: 505,color: TColors.txtbouttongreydark,),
+                      TextFormFieldWidget(label: "Nom entreprise",icon: Icons.domain,hintext:"Entrer le nom de l'entreprise",width: 505,color: TColors.txtbouttongreydark,controller: widget.nomController,),
 
-                      TextFormFieldWidget(label: "Téléphone entreprise",icon: Icons.phone,hintext:"Entrer téléphone de l'entreprise",width: 505,color: TColors.txtbouttongreydark,),
+                      TextFormFieldWidget(label: "Téléphone entreprise",icon: Icons.phone,hintext:"Entrer téléphone de l'entreprise",width: 505,color: TColors.txtbouttongreydark,controller: widget.telController,),
                     ],
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding: EdgeInsets.symmetric(horizontal: 8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      TextFormFieldWidget(label: "Addresse",icon: Icons.location_on,hintext:"Entrer l'adresse",width: 505,color: TColors.txtbouttongreydark,),
-                      TextFormFieldWidget(label: "Complément",icon: Icons.location_on,hintext:"Entrer le complément d'adresse",width: 505,color: TColors.txtbouttongreydark,),
+                      TextFormFieldWidget(label: "Addresse",icon: Icons.location_on,hintext:"Entrer l'adresse",width: 505,color: TColors.txtbouttongreydark,controller: widget.adresseController,),
+                      TextFormFieldWidget(label: "Complément",icon: Icons.location_on,hintext:"Entrer le complément d'adresse",width: 505,color: TColors.txtbouttongreydark,controller: widget.complementController),
                     ],
                   ),
                 ),
@@ -103,11 +111,11 @@ class _InformationSettingState extends State<InformationSetting> {
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Container(
                           width:505,
-                          child: const Row(
+                          child:  Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              TextFormFieldWidget(label: "Code postal",icon: Icons.location_on,hintext:"Entrer votre cp",width: 230,color: TColors.txtbouttongreydark,),
-                              TextFormFieldWidget(label: "Ville",icon: Icons.location_on,hintext:"Entrer votre ville",width: 230,color: TColors.txtbouttongreydark,),
+                              TextFormFieldWidget(label: "Code postal",icon: Icons.location_on,hintext:"Entrer votre cp",width: 230,color: TColors.txtbouttongreydark,controller: widget.cpController,),
+                              TextFormFieldWidget(label: "Ville",icon: Icons.location_on,hintext:"Entrer votre ville",width: 230,color: TColors.txtbouttongreydark,controller: widget.villeController,),
                             ],
                           ),
                         ),
@@ -238,18 +246,18 @@ class _InformationSettingState extends State<InformationSetting> {
                           ],
                         ),
                       ),
-                      const TextFormFieldWidget(label: "Nom prénom",icon: Icons.person,hintext:"Entrer votre nom",width: 505,color: TColors.txtbouttongreydark,),
+                      TextFormFieldWidget(label: "Nom prénom",icon: Icons.person,hintext:"Entrer votre nom",width: 505,color: TColors.txtbouttongreydark,controller: widget.nom2Controller,),
                     ],
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 8.0),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      TextFormFieldWidget(label: "Email",icon: Icons.email,hintext:"Entrer l'email",width: 505,color: TColors.txtbouttongreydark,),
-                      TextFormFieldWidget(label: "Téléphone contact",icon: Icons.phone,hintext:"Entrer le téléphone du contact",width: 505,color: TColors.txtbouttongreydark,),
+                      TextFormFieldWidget(label: "Email",icon: Icons.email,hintext:"Entrer l'email",width: 505,color: TColors.txtbouttongreydark,controller: widget.emailController,),
+                      TextFormFieldWidget(label: "Téléphone contact",icon: Icons.phone,hintext:"Entrer le téléphone du contact",width: 505,color: TColors.txtbouttongreydark,controller: widget.tel2Controller,),
                     ],
                   ),
                 ),

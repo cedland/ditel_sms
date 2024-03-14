@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../utils/constants/colors.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
-  const TextFormFieldWidget({super.key, this.label, this.validator, this.icon, this.hintext, required this.width, required this.color,});
+  const TextFormFieldWidget({super.key, this.label, this.validator, this.icon, this.hintext, required this.width, required this.color, required this.controller, this.keyboardType,});
 
   final String? label;
   final String? validator;
@@ -11,14 +11,19 @@ class TextFormFieldWidget extends StatelessWidget {
   final String? hintext;
   final double width;
   final Color color;
+  final TextEditingController controller;
+  final TextInputType? keyboardType;
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
+      //color: Colors.blue,
       width: width,
-      height: 60,
+      height: 70,
       child: TextFormField(
-          style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: TColors.title, fontSize: 16, fontFamily: 'LatoBold'),
+         controller: controller,
+        keyboardType: keyboardType,
+          style: Theme.of(context).textTheme.bodyMedium!.copyWith(color: TColors.title, fontSize: 12, fontFamily: 'LatoBold'),
           decoration: InputDecoration(
             suffixIcon:  Icon(
               icon,
@@ -33,7 +38,7 @@ class TextFormFieldWidget extends StatelessWidget {
                 .copyWith(
                 color: TColors.subtitle,
                 fontFamily: "LatoRegular",
-                fontSize: 14),
+                fontSize: 12),
             hintText: hintext,
             hintStyle: Theme.of(context)
                 .textTheme
@@ -41,7 +46,7 @@ class TextFormFieldWidget extends StatelessWidget {
                 .copyWith(
                 color: TColors.txtbouttongreydark,
                 fontFamily: "LatoLight",
-                fontSize: 16),
+                fontSize: 10),
 
           ),
           cursorColor: TColors.title,
@@ -50,8 +55,6 @@ class TextFormFieldWidget extends StatelessWidget {
               return validator;
             }
             return null;
-          },
-          onSaved: (value) {
           },
         ),
     );

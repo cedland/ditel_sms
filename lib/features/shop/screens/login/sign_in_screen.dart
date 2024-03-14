@@ -12,7 +12,9 @@ import '../../../../utils/constants/colors.dart';
 import '../dashboard/dashbord.dart';
 
 class SignInScreen extends StatelessWidget {
-  const SignInScreen({super.key});
+  SignInScreen({super.key});
+
+  TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +34,7 @@ class SignInScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const TextFormFieldWidget(label: "Email",validator: "The email you provided is not valid",icon: Icons.mail,hintext: "Enter your Email",width: 420,color: TColors.title,),
+                  TextFormFieldWidget(label: "Email",validator: "The email you provided is not valid",icon: Icons.mail,hintext: "Enter your Email",width: 420,color: TColors.title,controller: emailController,),
                   const TextFormFieldPasswordWidget(width: 420, color: TColors.txtbouttongreydark,label: "Password",hintext:"Start typing...", icon1: Icons.lock, icon2:Icons.visibility_off,),
                   const SizedBox(height: 18,),
                   Row(
@@ -43,7 +45,7 @@ class SignInScreen extends StatelessWidget {
                       TextButtonWidget(onPressed: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const SignInRecoveryScreen()),
+                          MaterialPageRoute(builder: (context) => SignInRecoveryScreen()),
                         );
                       }, text: "Mot de passe oublié ?", width: 150,)
                     ],
@@ -52,7 +54,7 @@ class SignInScreen extends StatelessWidget {
                   CustomButton(text: 'Connexion',onPressed: (){
                     Navigator.push(
                       context,
-                      MaterialPageRoute(builder: (context) => Dashboard()),
+                      MaterialPageRoute(builder: (context) => Dashboard(0)),
                     );
                   },),
                 ],

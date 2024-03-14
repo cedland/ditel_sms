@@ -8,7 +8,9 @@ import '../../../../utils/constants/colors.dart';
 
 
 class SignInRecoveryScreen extends StatelessWidget {
-  const SignInRecoveryScreen({super.key});
+  SignInRecoveryScreen({super.key});
+
+  TextEditingController emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +46,7 @@ class SignInRecoveryScreen extends StatelessWidget {
                   fontFamily: 'LatoRegular',
                   color: TColors.subtitle, ),),
                 const SizedBox(height: 25,),
-                const TextFormFieldWidget(label: "Email",validator: "The email you provided is not valid",icon: Icons.mail,hintext: "Enter your Email",width: 420,color: TColors.title,),
+                TextFormFieldWidget(label: "Email",validator: "The email you provided is not valid",icon: Icons.mail,hintext: "Enter your Email",width: 420,color: TColors.title, controller: emailController,),
                 const SizedBox(height: 25,),
                 CustomButton(text: 'Valider',onPressed: (){
                   Navigator.push(

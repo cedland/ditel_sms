@@ -7,10 +7,22 @@ import 'infos_contact_widget.dart';
 
 class ContactInfo extends StatelessWidget {
   const ContactInfo(
-      {super.key, required this.contact, required this.onClosePressed});
+      {super.key,required this.onClosePressed,required this.image, required this.name, required this.fonction, required this.telephone, required this.email, required this.groupe, required this.adresse, required this.complement, required this.cp, required this.pays, required this.ville});
 
-  final Contact contact;
+  //final Contact contact;
   final VoidCallback onClosePressed;
+  final String image;
+  final String name;
+  final String fonction;
+  final String telephone;
+  final String email;
+  final String groupe;
+  final String adresse;
+  final String complement;
+  final String cp;
+  final String pays;
+  final String ville;
+
 
   @override
   Widget build(BuildContext context) {
@@ -55,16 +67,21 @@ class ContactInfo extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(vertical: 8.0),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(25),
-                      child: Image.network(
-                        contact.image,
-                        width: 90,
-                        height: 90,
-                        fit: BoxFit.cover,
-                      ),
+                      child:
+                        Image.network(
+                          image,
+                          width: 90,
+                          height: 90,
+                          fit:BoxFit.cover,
+                          errorBuilder: (BuildContext context, Object exception,
+                              StackTrace? stackTrace) {
+                            return Image.asset('assets/images/dashboard/img1.png');
+                          },
+                        )
                     ),
                   ),
                   Text(
-                    contact.name,
+                    name,
                       style: Theme.of(context)
                           .textTheme
                           .bodySmall!
@@ -73,7 +90,7 @@ class ContactInfo extends StatelessWidget {
                           fontSize: 15,fontWeight: FontWeight.bold,fontFamily: "LatoBold")
                   ),
                   Text(
-                    contact.function,
+                    fonction,
                       style: Theme.of(context)
                           .textTheme
                           .bodySmall!
@@ -129,29 +146,25 @@ class ContactInfo extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            InfoContact(contact: contact, text: 'Tel', bouton:true, value: contact.phoneNumber[0],),
-            InfoContact(contact: contact, text: 'Email', bouton: false, value: contact.email,),
-            InfoContact(contact: contact, text: 'Groupe', bouton: false, value: contact.group,),
-            InfoContact(contact: contact, text: 'Entreprise', bouton: false, value: contact.business,),
-            InfoContact(contact: contact, text: 'Adresse', bouton: false, value: contact.address,),
-            InfoContact(contact: contact, text: 'Complément', bouton: false, value: contact.complement,),
-            InfoContact(contact: contact, text: 'Code postal', bouton: false, value: contact.postalCode,),
-            InfoContact(contact: contact, text: 'Ville', bouton: false, value: contact.city,),
-            InfoContact(contact: contact, text: 'Pays', bouton: false, value: contact.country,),
-
+            InfoContact(text: 'Tel', bouton:true, value:telephone,),
+            InfoContact(text: 'Email', bouton: false, value: email,),
+            InfoContact(text: 'Groupe', bouton: false, value: groupe,),
+            InfoContact(text: 'Entreprise', bouton: false, value: fonction,),
+            InfoContact(text: 'Adresse', bouton: false, value: adresse,),
+            InfoContact(text: 'Complément', bouton: false, value:complement,),
+            InfoContact(text: 'Code postal', bouton: false, value:cp,),
+            InfoContact(text: 'Ville', bouton: false, value:ville,),
+            InfoContact(text: 'Pays', bouton: false, value: pays,),
             //const SizedBox(height: 30,),
-            InfoContact(contact: contact, text: 'Commentaire', bouton: false, value: contact.comment,),
-            const SizedBox(height: 10,),
+            const SizedBox(height: 40,),
 
-            SocialButton(contact: contact,)
+            const SocialButton()
           ],
         ),
       ),
     );
   }
 }
-
-
 
 
 Widget _buildRowIcon(IconData icon) {

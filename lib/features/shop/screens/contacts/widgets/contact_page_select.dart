@@ -49,7 +49,7 @@ class _ContactPageSelectState extends State<ContactPageSelect> {
                 size: 16,
               ),
               label: Text(
-                "Ret.",
+                "Retour",
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium!
@@ -121,7 +121,7 @@ class _ContactPageSelectState extends State<ContactPageSelect> {
                 size: 16,
               ),
               label: Text(
-                "Suiv.",
+                "Suivant",
                 style: Theme.of(context)
                     .textTheme
                     .bodyMedium!

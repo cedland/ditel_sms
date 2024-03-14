@@ -9,7 +9,11 @@ import '../../../../common/widgets/login/titre1.dart';
 import '../../../../utils/constants/colors.dart';
 
 class SignUp2Screen extends StatelessWidget {
-  const SignUp2Screen({super.key});
+  SignUp2Screen({super.key});
+
+  TextEditingController emailController = TextEditingController();
+  TextEditingController firstnameController = TextEditingController();
+  TextEditingController lastnameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -29,12 +33,12 @@ class SignUp2Screen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const TextFormFieldWidget(label: "Email",validator: "The email you provided is not valid",icon: Icons.mail,hintext:"Enter your Email",width: 420,color: TColors.title,),
-                  const Row(
+                  TextFormFieldWidget(label: "Email",validator: "The email you provided is not valid",icon: Icons.mail,hintext:"Enter your Email",width: 420,color: TColors.title,controller: emailController,),
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      TextFormFieldWidget(label: "First Name",icon: Icons.person,hintext:"Enter your name",width: 200,color: TColors.txtbouttongreydark,),
-                      TextFormFieldWidget(label: "Last Name",icon: Icons.person,hintext:"Enter your last name",width: 200,color: TColors.txtbouttongreydark,),
+                      TextFormFieldWidget(label: "First Name",icon: Icons.person,hintext:"Enter your name",width: 200,color: TColors.txtbouttongreydark,controller: firstnameController,),
+                      TextFormFieldWidget(label: "Last Name",icon: Icons.person,hintext:"Enter your last name",width: 200,color: TColors.txtbouttongreydark,controller: lastnameController,),
                     ],
                   ),
                   const TextFormFieldPasswordWidget(width: 420, color: TColors.txtbouttongreydark,label: "Password",hintext:"Enter your password", icon1: Icons.lock, icon2:Icons.visibility_off,),

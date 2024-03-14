@@ -4,10 +4,12 @@ import '../../../../../classes/contact.dart';
 import '../../../../../utils/constants/colors.dart';
 
 class ContactWidget extends StatelessWidget {
-  final Contact contact;
-  final bool connect;
+  final String image;
+  final String name;
+  final String fonction;
+  bool connect = true;
 
-  const ContactWidget({super.key, required this.contact, required this.connect});
+  ContactWidget({super.key,required this.image, required this.name, required this.fonction});
 
   @override
   Widget build(BuildContext context) {
@@ -25,11 +27,15 @@ class ContactWidget extends StatelessWidget {
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10),
                     child: Image.network(
-                      contact.image,
+                      image,
                       width: 36,
                       height: 36,
-                      fit: BoxFit.cover,
+                      errorBuilder: (BuildContext context, Object exception,
+                          StackTrace? stackTrace) {
+                        return Image.asset('assets/images/dashboard/img1.png');
+                      },
                     ),
+
                   ),
                 ),
               ),
@@ -66,8 +72,8 @@ class ContactWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(contact.name,style: Theme.of(context).textTheme.bodySmall!.copyWith(fontFamily: "LatoBold",fontSize: 14,color: TColors.title)),
-                Text(contact.function, style: Theme.of(context).textTheme.bodySmall!.copyWith(color: const Color.fromARGB(255, 128, 131, 163),fontFamily: "LatoRegular",fontSize: 14),),
+                Text(name,style: Theme.of(context).textTheme.bodySmall!.copyWith(fontFamily: "LatoBold",fontSize: 14,color: TColors.title)),
+                Text(fonction, style: Theme.of(context).textTheme.bodySmall!.copyWith(color: const Color.fromARGB(255, 128, 131, 163),fontFamily: "LatoRegular",fontSize: 14),),
               ],
             ),
           ),
